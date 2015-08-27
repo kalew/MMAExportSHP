@@ -17,7 +17,7 @@ writeshp[geometry_, filepath_] :=
      Commonest[geometry[[All, 0]]][[1]]][[1]];
   BinaryWrite[str, {1000, shapetype}, "Integer32", ByteOrdering -> -1];
   bounds = 
-   If[shapetype == 1, MinMax /@ geometry[[All, 1]], 
+   If[shapetype == 1, MinMax /@ Transpose[geometry[[All, 1]]], 
     MinMax /@ Transpose[Join @@ (geometry[[All, 1]])]];
   BinaryWrite[
    str, {bounds[[1, 1]], bounds[[2, 1]], bounds[[1, 2]], 
