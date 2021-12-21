@@ -88,7 +88,7 @@ writepolygon[stream_, shxstream_, polyrecord_, recordnumber_] :=
   BinaryWrite[stream, {recordnumber, 22 + 2*numpart + 8*numpoints}, 
    "Integer32", ByteOrdering -> 1];
   BinaryWrite[
-   stream, {3, bounds[[1, 1]], bounds[[2, 1]], bounds[[1, 2]], 
+   stream, {5, bounds[[1, 1]], bounds[[2, 1]], bounds[[1, 2]], 
     bounds[[2, 2]], numpart, numpoints, 
     Sequence @@ Range[0, numpart - 1], 
     Sequence @@ (Flatten@polyrecord[[1]])}, {"Integer32", "Real64", 
